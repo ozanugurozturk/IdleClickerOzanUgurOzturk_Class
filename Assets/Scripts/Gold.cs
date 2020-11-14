@@ -5,6 +5,18 @@ public class Gold : MonoBehaviour
 {
     public int goldAmount;
     public Text goldAmountText;
+    public int goldAmountIncreasePerClick = 1;
+
+    void Start()
+    {
+        this.goldAmount = PlayerPrefs.GetInt("Gold", 0);
+    }
+    void OnDestroy()
+    {
+        PlayerPrefs.SetInt("Gold", this.goldAmount);
+    }
+
+
 
     private void Update()
     {
@@ -14,7 +26,7 @@ public class Gold : MonoBehaviour
 
     public void ProduceGold()
     {
-        this.goldAmount = this.goldAmount + 5;
+        this.goldAmount = this.goldAmount + goldAmountIncreasePerClick;
     }
 }
  

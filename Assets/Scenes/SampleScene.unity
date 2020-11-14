@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goldAmount: 0
   goldAmountText: {fileID: 872306076}
+  goldAmountIncreasePerClick: 3
 --- !u!4 &676398810
 Transform:
   m_ObjectHideFlags: 0

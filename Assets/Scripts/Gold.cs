@@ -2,31 +2,38 @@
 using UnityEngine.UI;
 
 public class Gold : MonoBehaviour
-{
-    public int goldAmount;
+{    
     public Text goldAmountText;
-    public int goldAmountIncreasePerClick = 1;
+    public int goldAmountPerClick = 1;
 
+    public int GoldAmount
+    {
+        get => PlayerPrefs.GetInt("Gold",1);
+        set
+        {
+            PlayerPrefs.SetInt("Gold", value);
+            UpdateGoldAmountLabel();
+        }
+    }
+    void UpdateGoldAmountLabel()
+    {
+        this.goldAmountText.text = this.GoldAmount.ToString("0 Gold");
+    }
     void Start()
     {
-        this.goldAmount = PlayerPrefs.GetInt("Gold", 0);
+        this.GoldAmount = this.GoldAmount;
+        UpdateGoldAmountLabel();
     }
-    void OnDestroy()
-    {
-        PlayerPrefs.SetInt("Gold", this.goldAmount);
-    }
-
-
-
     private void Update()
     {
-        this.goldAmountText.text = this.goldAmount.ToString("0");
+        if (Input.GetMouseButtonDown(0))
+        {
+            ProduceGold();
+        }
     }
-
-
     public void ProduceGold()
     {
-        this.goldAmount = this.goldAmount + goldAmountIncreasePerClick;
+        this.GoldAmount = this.GoldAmount + this.goldAmountPerClick;
     }
 }
  

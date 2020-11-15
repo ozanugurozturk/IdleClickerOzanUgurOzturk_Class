@@ -1,26 +1,32 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static GoldProductionUnits;
 
 public class GoldPress : MonoBehaviour
 {
-    public int productionAmount = 1;
-    public int costs = 100;
-    public float productionTime = 1f;
+    GoldProductionUnit goldProductionUnit;
     public Text goldPressAmountText;
     float elapsedTime;
+
+    public void SetUp(GoldProductionUnit goldProductionUnit)
+    {
+        this.goldProductionUnit = goldProductionUnit;
+        this.gameObject.name = goldProductionUnit.name;
+    }
+
     public int GoldPressAmount
     {
-        get=> PlayerPrefs.GetInt("GoldPress",0);
+        get=> PlayerPrefs.GetInt(this.goldProductionUnit.name, 0);
         set
         {
-            PlayerPrefs.SetInt("GoldPress", value);
+            PlayerPrefs.SetInt(this.goldProductionUnit.name, value);
             UpdateGoldPressAmountLabel();
         }
     }
     void UpdateGoldPressAmountLabel()
     {
-        this.goldPressAmountText.text = this.GoldPressAmount.ToString("0 GoldPresses");
+        this.goldPressAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionUnit.name}");
     }
     private void Start()
     {
@@ -29,23 +35,23 @@ public class GoldPress : MonoBehaviour
     private void Update()
     {
         this.elapsedTime += Time.deltaTime;
-        if (this.elapsedTime>=this.productionTime)
+        if (this.elapsedTime>=this.goldProductionUnit.productionTime)
         {
             ProduceGold();
-            this.elapsedTime -= this.productionTime;
+            this.elapsedTime -= this.goldProductionUnit.productionTime;
         }
     }
     private void ProduceGold()
     {
         var gold = FindObjectOfType<Gold>();
-        gold.GoldAmount += this.productionAmount * this.GoldPressAmount; 
+        gold.GoldAmount += this.goldProductionUnit.productionAmount * this.GoldPressAmount; 
     }
     public void BuyGoldPress()
     {
         var gold = FindObjectOfType<Gold>();
-        if (gold.GoldAmount>=this.costs)
+        if (gold.GoldAmount>=this.goldProductionUnit.costs)
         {
-            gold.GoldAmount -= this.costs;
+            gold.GoldAmount -= this.goldProductionUnit.costs;
             this.GoldPressAmount += 1;
         }
     } 

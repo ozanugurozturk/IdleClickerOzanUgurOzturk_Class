@@ -7,6 +7,7 @@ public class GoldPress : MonoBehaviour
 {
     GoldProductionUnit goldProductionUnit;
     public Text goldPressAmountText;
+    public Text goldPressButtonText;
     float elapsedTime;
 
     public void SetUp(GoldProductionUnit goldProductionUnit)
@@ -27,6 +28,7 @@ public class GoldPress : MonoBehaviour
     void UpdateGoldPressAmountLabel()
     {
         this.goldPressAmountText.text = this.GoldPressAmount.ToString($"0 {this.goldProductionUnit.name}");
+        this.goldPressButtonText.text = $"{this.goldProductionUnit.name} (cost:{this.goldProductionUnit.costs})";
     }
     private void Start()
     {

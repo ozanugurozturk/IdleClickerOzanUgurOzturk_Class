@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Gold : MonoBehaviour
 {    
     public Text goldAmountText;
-    public int goldAmountPerClick = 1;
+    public int goldAmountPerClick = 5;
 
     public int GoldAmount
     {
@@ -21,7 +21,6 @@ public class Gold : MonoBehaviour
     }
     void Start()
     {
-        this.GoldAmount = this.GoldAmount;
         UpdateGoldAmountLabel();
     }
     private void Update()

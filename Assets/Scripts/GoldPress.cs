@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class GoldPress : MonoBehaviour
 {
-    public int productionAmount = 5;
+    public int productionAmount = 1;
     public int costs = 100;
     public float productionTime = 1f;
-    public Text goldAmountText;
+    public Text goldPressAmountText;
     float elapsedTime;
     public int GoldPressAmount
     {
@@ -20,7 +20,7 @@ public class GoldPress : MonoBehaviour
     }
     void UpdateGoldPressAmountLabel()
     {
-        this.goldAmountText.text = this.GoldPressAmount.ToString("0 GoldPresses");
+        this.goldPressAmountText.text = this.GoldPressAmount.ToString("0 GoldPresses");
     }
     private void Start()
     {

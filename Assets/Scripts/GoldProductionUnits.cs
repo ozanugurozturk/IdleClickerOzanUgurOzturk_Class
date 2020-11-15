@@ -15,12 +15,13 @@ public class GoldProductionUnits : MonoBehaviour
     }
 
     public GoldProductionUnit[] goldProductionUnits;
+    public GameObject goldProductionUnitPrefab;
 
     void Start()
     {
         foreach (var productionUnit in this.goldProductionUnits)
         {
-
+            var instance = Instantiate(this.goldProductionUnitPrefab);
         }
     }
 

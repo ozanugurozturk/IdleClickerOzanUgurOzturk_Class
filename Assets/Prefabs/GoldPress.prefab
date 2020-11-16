@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldPressAmountText: {fileID: 3082739492570585622}
-  goldPressButtonText: {fileID: 3082739492789257987}
 --- !u!1 &3082739492570585620
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +197,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 10
+    m_FontSize: 18
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1

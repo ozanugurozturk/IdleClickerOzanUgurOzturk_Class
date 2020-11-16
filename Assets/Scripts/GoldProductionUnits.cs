@@ -9,7 +9,6 @@ public class GoldProductionUnits : MonoBehaviour
     public class GoldProductionUnit
     {
         public string name = "GoldPress";
-        public string buttonName = "ButtonName";
         public int productionAmount = 1;
         public int costs = 100;
         public float productionTime = 1f;        
